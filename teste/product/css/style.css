@@ -11,6 +11,19 @@
     text-transform: uppercase;
     border: none;
 }
+.list-unstyled.love li, 
+.list-unstyled.no-love li {
+  background: url('../img/check.svg') no-repeat;
+  background-position: center left;
+  padding:0 0 5% 45px;
+  line-height: 35px;
+  padding: 0px 20px;
+}
+
+/* ======= change the no-love image ========== */
+.list-unstyled.no-love li {
+  background: url('../img/check.svg') no-repeat;
+}
 small{
 	line-height: 15px;
 	padding: 0px;
