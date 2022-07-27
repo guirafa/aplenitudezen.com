@@ -26,6 +26,116 @@
 .padding-bottom25{padding-bottom: 25px;}
 .padding-bottom50{padding-bottom: 50px;}
 .radius{border-radius: 20px 20px 20px 20px;}
+/* VARIABLES */
+:root{
+    --vi-lazyload-logo-blue: url("");
+}
+
+/* vimeo lazyload container */
+.vi-lazyload{
+    width:100%;
+    position:relative!important;
+    overflow:hidden;
+    cursor:pointer;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+
+/* vimeo lazyload container ::before --> to maintain 16/9 ratio & black bg before JS loaded */
+.vi-lazyload::before{
+    content:"";
+    width:100%;
+    display:block;
+    position:relative;
+    padding-top:56.25%; /*16:9 ratio*/
+    background-color:#000;
+}
+
+/* vimeo lazyload wrap */
+.vi-lazyload-wrap{
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    padding:inherit;
+}
+
+/* vimeo lazyload content */
+.vi-lazyload-content{
+    width:100%;
+    height:100%;
+    position:relative;
+    background-color:#000;
+    background-image:var(--vi-lazyload-img);
+    background-size:cover;
+    background-position:50%;
+    background-repeat:no-repeat;
+}
+
+/* play-btn */
+.vi-lazyload-playbtn{
+    display:block;
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    z-index:1;
+    background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 8'><rect fill='rgba(254,159,166,0.795)' width='13' height='8' rx='1' ry='1'/><polygon fill='%23fff' points='5 6 9 4 5 2'/></svg>");
+    background-position:50%;
+    background-size:calc(35px + 10%) auto;
+    background-repeat:no-repeat;
+}
+
+/* play-btn:hover */
+.vi-lazyload-playbtn:hover{
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 8'%3E%3Crect fill='%231ab7ea' width='13' height='8' rx='1' ry='1'/%3E%3Cpolygon fill='%23fff' points='5 6 9 4 5 2'/%3E%3C/svg%3E");
+}
+
+/* logo */
+.vi-lazyload-logo{
+    display:block;
+    width:30%;
+    min-width:95px;
+    min-height:27px;
+    max-width:215px;
+    padding-top:8.6%;   /* 28.440367% (logo height/width in %) * 0.3 (equivalent to width:30%) = 8.5321101% rounded up */
+    position:absolute;
+    right:4%;
+    bottom:4%;
+    z-index:2;
+    background-image:var(--vi-lazyload-logo-blue);
+    background-position:50%;
+    background-size:contain;
+    background-repeat:no-repeat;
+    opacity:.75;
+    transition:opacity .3s;
+}
+
+/* 0 = no logo! */
+/* 1 = blue  - #1ab7ea */.vi-lazyload[data-logo="1"] .vi-lazyload-logo{}
+/* 2 = dark  - #162221 */.vi-lazyload[data-logo="2"] .vi-lazyload-logo{filter:brightness(0) saturate(100%) invert(10%) sepia(31%) saturate(433%) hue-rotate(126deg) brightness(96%) contrast(95%)}
+/* 3 = white - #fff    */.vi-lazyload[data-logo="3"] .vi-lazyload-logo{filter:grayscale(100%) brightness(200%)}
+
+/* logo:hover */
+.vi-lazyload-logo:hover{
+    opacity:1;
+    transition:opacity .3s;
+}
+
+/* iframe */
+.vi-lazyload iframe{
+    width:100%!important;
+    height:100%!important;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:3;
+    border:0;
+    background-color:#000;
+}
 @media only screen and (max-width: 767px) {
     .padding30{
         padding: 0px 5px;
